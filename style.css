@@ -1,14 +1,17 @@
-*{
+/* Reset default styles */
+* {
     margin: 0;
     padding: 0;
-    border: border-box;
+    box-sizing: border-box;
 }
 
-li{
+/* Global styles */
+li {
     font-size: 1.25rem;
+    list-style-type: circle;
 }
 
-h1{
+h1 {
     padding: 0.5rem;
     font-size: 1.5rem;
     text-align: center;
@@ -19,15 +22,17 @@ h1{
     color: #ffffff;
 }
 
-.container{
-    margin: 1rem 0rem;
+/* Container styles */
+.container {
+    margin: 1rem 0;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
 }
 
-#user-input{
+/* User input styles */
+#user-input {
     width: 30vw;
     padding: 0.5rem;
     border: 1px solid #212121;
@@ -36,12 +41,13 @@ h1{
     outline: none;
 }
 
-#user-input:focus{
+#user-input:focus {
     border-color: #007bff;
     box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.Add-userinput{
+/* Add user input button styles */
+.Add-userinput {
     padding: 0.5rem;
     font-weight: bold;
     text-align: center;
@@ -55,17 +61,18 @@ h1{
 }
 
 .Add-userinput:hover,
-.Add-userinput:focus{
+.Add-userinput:focus {
     background-color: #2980b9;
     border-color: #2980b9;
 }
 
-.Add-userinput:active{
+.Add-userinput:active {
     background-color: #1f618d;
     border-color: #1f618d;
 }
 
-#added-list{
+/* List container styles */
+#added-list {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -73,41 +80,42 @@ h1{
     gap: 1rem;
 }
 
-.outer-div{
+/* Outer todo item container styles */
+.outer-div {
     border: 1px solid #6ae497;
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
     gap: 0.5rem;
     border-radius: 1rem;
 }
 
-.delete-btn i{
+/* Delete button icon styles */
+.delete-btn i {
     margin-bottom: 1rem;
     display: flex;
-    align-items: end;
-    justify-content: end;
+    align-items: flex-end;
+    justify-content: flex-end;
     color: red;
     cursor: pointer;
 }
 
-.first-inner-div{
+/* First inner container styles (title and add item) */
+.first-inner-div {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.5rem;
 }
 
-.first-inner-div input{
+.first-inner-div input {
     padding: 0.4rem;
     border: 1px solid #514c4c;
     border-radius: 0.5rem;
     outline: none;
 }
 
-.first-inner-div i{
+.first-inner-div i {
     padding: 0.4rem;
     border: 1px solid #514c4c;
     border-radius: 1rem;
@@ -116,26 +124,54 @@ h1{
     cursor: pointer;
 }
 
-.second-inner-div{
+/* Second inner container styles (list of items) */
+.second-inner-div {
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
-.second-inner-div h3{
+.second-inner-div h3 {
     font-size: 1.5rem;
     text-align: center;
 }
 
-.inner-container{
+/* Inner item container styles */
+.inner-container {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
 }
 
-.inner-container input{
+.inner-container input {
     padding-top: 0.25rem;
     font-size: 1rem;
     margin-right: 0.2rem;
 }
 
+/* media query for screen smaller than 480px ( mobile devices ). */
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    #user-input {
+        width: 60%;
+    }
+
+    .second-inner-div h3 {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    li {
+        font-size: 1rem;
+    }
+}
+
+/* media queries for screen between 481px to 768px (tablets). */
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+}

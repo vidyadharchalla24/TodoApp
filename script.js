@@ -6,18 +6,17 @@ const newTodo = document.querySelector('.Add-userinput');
 // div container
 const addLi = document.querySelector('#added-list');
 
+// Event listener for "New Todo" button
 newTodo.addEventListener('click',()=>{
     if(userInput.value !== ''){
+        // Create an outer container for a new todo item
         const outerDiv = document.createElement('div');
         outerDiv.className = 'outer-div';
         outerDiv.innerHTML=`
         <div class="delete-btn">
             <i class="fa-solid fa-trash fa-xl" onclick=deleteButton(this)></i>
         </div>`;
-        const planInput = document.createElement('div'); 
-        planInput.className = 'first-inner-div';
-        outerDiv.appendChild(planInput);
-        addLi.appendChild(outerDiv);
+        // create a container for title display.
         const plans = document.createElement('div');
         plans.className = 'second-inner-div';
         plans.innerHTML =`
@@ -25,6 +24,11 @@ newTodo.addEventListener('click',()=>{
         `;
         userInput.value='';
         outerDiv.appendChild(plans);
+        // create a container for adding new Todo items
+        const planInput = document.createElement('div'); 
+        planInput.className = 'first-inner-div';
+        outerDiv.appendChild(planInput);
+        addLi.appendChild(outerDiv);
         const text = document.createElement('input');
         text.type = 'text';
         planInput.appendChild(text);
@@ -32,6 +36,7 @@ newTodo.addEventListener('click',()=>{
         button.className = 'fa-solid fa-plus';
         planInput.appendChild(button);
 
+        // Event Listener for adding todoItems
         button.addEventListener('click',()=>{
             if(text.value !== ''){
                 const innerDiv = document.createElement('div');
@@ -44,13 +49,14 @@ newTodo.addEventListener('click',()=>{
                 <i class="fa-regular fa-trash-can fa-xl" onclick='deleteItem(this)' style="color: red;"></i>
                 </div>
                 `; 
-                plans.appendChild(innerDiv);
+                outerDiv.appendChild(innerDiv);
                 text.value='';
             }
         })
     }
 })
 
+// A function for marking items as completed
 function isComplete(param, condition){
     const iconElement = document.createElement('i');
     if(!condition){
@@ -70,15 +76,9 @@ function isComplete(param, condition){
 }
 
 
-function deleteButton(param){
-    addLi.removeChild(param.parentNode.parentNode);
-}
-
-
+// A function for editing todoItems
 function editItem(params){
-
-    console.log(params.parentNode.parentNode.children);
-
+    // retrieve an elements
     let arr = Array.from(params.parentNode.parentNode.children);
     const input = document.createElement('input');
     input.type='text';
@@ -86,12 +86,14 @@ function editItem(params){
     const text = arr[0].textContent;
     input.value = `${text}`;
     arr[0].replaceWith(input);
+    // create an Save icon
     const saveButton = document.createElement('i');
     saveButton.className = 'fa-solid fa-floppy-disk fa-xl';
     params.parentNode.appendChild(saveButton);
     params.style.display='none';
     params.nextElementSibling.style.display = 'none';
     params.previousElementSibling.style.display='none';
+    // Event Listener for saving updates
     saveButton.addEventListener('click',function(){
         params.style.display='inline';
         params.nextElementSibling.style.display = 'inline';
@@ -103,6 +105,11 @@ function editItem(params){
     })
 }
 
+// A function for deleting Todo
+function deleteButton(param){
+    addLi.removeChild(param.parentNode.parentNode);
+}
+// A function for deleting todoItems.
 function deleteItem(params){
     params.parentNode.parentNode.parentNode.removeChild(params.parentNode.parentNode);
 }
