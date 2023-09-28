@@ -44,7 +44,7 @@ newTodo.addEventListener('click',()=>{
                 innerDiv.innerHTML= `
                 <li>${text.value}</li>
                 <div>
-                <i class="fa-regular fa-circle fa-xl" onclick='isComplete(this,false)'></i>
+                <i class="fa-regular fa-circle fa-xl" style="color: black;" onclick='isComplete(this,false)'></i>
                 <i class="fa-regular fa-pen-to-square fa-xl" onclick='editItem(this)'></i>
                 <i class="fa-regular fa-trash-can fa-xl" onclick='deleteItem(this)' style="color: red;"></i>
                 </div>
@@ -58,20 +58,18 @@ newTodo.addEventListener('click',()=>{
 
 // A function for marking items as completed
 function isComplete(param, condition){
-    const iconElement = document.createElement('i');
     if(!condition){
         param.nextElementSibling.style.display='none';
         param.parentNode.previousElementSibling.style.textDecoration = 'line-through';
-        iconElement.className = 'fa-solid fa-circle-check fa-xl';
-        iconElement.style.color='#e7820d';
-        iconElement.setAttribute('onclick','isComplete(this,true)');
-        param.replaceWith(iconElement);
+        param.className = 'fa-solid fa-circle-check fa-xl';
+        param.style.color='#e7820d';
+        param.setAttribute('onclick','isComplete(this,true)');
     }else{
         param.nextElementSibling.style.display='inline';
         param.parentNode.previousElementSibling.style.textDecoration = 'none';
-        iconElement.className = 'fa-regular fa-circle fa-xl';
-        iconElement.setAttribute('onclick','isComplete(this,false)');
-        param.replaceWith(iconElement);
+        param.className = 'fa-regular fa-circle fa-xl';
+        param.style.color='black';
+        param.setAttribute('onclick','isComplete(this,false)');
     }
 }
 
